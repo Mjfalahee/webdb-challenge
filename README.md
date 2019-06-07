@@ -33,9 +33,22 @@ This will be akin to the Web API that you built in the last sprint, only this ti
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 1. Explain the difference between `RDBMS` and `SQL`.
-1. Why do tables need a `primary key`?
-1. What is the name given to a table column that references the primary key on another table.
-1. What do we need in order to have a _many to many_ relationship between two tables.
+
+  A RDBMS, or Relational Database Management System, is a system of methods that allow a developer to access relational databases. Relational databases are collections of data, strictly organized into rows and columns, and separated into tables based on whatever categories the developer decides to use. I like to relate them to excel because I've used it a lot in the past for different math and statistics classes, so it helps to see the relationships. RDBMS are responsible for setting up our CRUD api methods that we've used in previous modules.
+
+  SQL, specifically, is a standard within the world of RDBMS(s?). It's a LANGUGAGE, whereas RDBMS is more a set of rules and relationships. SQL manipulates data through different lenses with a very english-like syntax in order to grab what data we need, without changing the actual database. 
+
+2. Why do tables need a `primary key`?
+
+  Primary keys are the way a database figures out a row from a different row of data. They are unique and no two rows can have the same primary key. Without them, databases wouldn't be easily read. Basically they are the little strip of gibberish that your librarian would put on your library card whenever you took out a book from the library, they are the primary identifier for a set of data within a table.
+
+3. What is the name given to a table column that references the primary key on another table.
+
+  A foreign key. It points to a different table signifying a direct relationship between the two tables. It's important to note that the table that references another must be set up after the one with being referenced, otherwise your IDE will yell at you.
+
+4. What do we need in order to have a _many to many_ relationship between two tables.
+
+  A table that sits between the two tables with primary keys, with 2 foreign keys referencing each of the tables. It acts as a bridge between the two tables.
 
 ## Project Set Up
 
