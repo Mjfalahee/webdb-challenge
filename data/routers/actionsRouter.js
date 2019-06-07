@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-//get action by id
+//get action by id == add in contexts for the action
 router.get('/:id', async (req, res) => {
     try {
         const action = await db.getActionById(req.params.id);

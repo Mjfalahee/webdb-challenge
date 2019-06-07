@@ -59,11 +59,22 @@ function getActions() {
     return db('actions');
 }
 
-//get action by action id
+//get action by action id, and list all contexts for the action
+
+//previous getActionById before contexts 
+
+// function getActionById(id) {
+//     return db('actions')
+//         .where({ id })
+// }
 
 function getActionById(id) {
-    return db('actions')
-        .where({ id })
+    return db
+        .select(['actions.*', knex.raw("GROUP_CONCAT(contexts.name) as contexts")])
+        .from('actions')
+        .join('action_contexts', 'actions.id', 'action_contexts.action_id')
+        .join('contexts', 'action_contexts.context_id', 'contexts.id')
+        .where('actions.id', id)
 }
 
 //delete project
