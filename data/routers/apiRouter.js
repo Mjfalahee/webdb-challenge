@@ -77,4 +77,17 @@ router.get('/actions', async (req, res) => {
     }
 });
 
+
+//get action by id
+router.get('/actions/:id', async (req, res) => {
+    try {
+        const action = await db.getActionById(req.params.id);
+        res.status(200).json(action);
+    }
+    catch (error) {
+        res.status(500).json({
+            message: `Failure to retrieve action by id ${req.params.id}`
+        })
+    }
+})
 module.exports = router;
