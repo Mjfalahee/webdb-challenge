@@ -1,7 +1,8 @@
 const express = require('express');
 
 //add router
-const apiRouter = require('./data/routers/apiRouter');
+const projectsRouter = require('./data/routers/projectsRouter');
+const actionsRouter = require('./data/routers/actionsRouter');
 
 const server = express();
 server.use(express.json());
@@ -11,7 +12,8 @@ server.get('/', (req, res) => {
 });
 
 //server.use router
-server.use('/api/', apiRouter);
+server.use('/api/projects', projectsRouter);
+server.use('/api/actions', actionsRouter);
 
 
 module.exports = server;
