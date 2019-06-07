@@ -26,9 +26,9 @@ router.get('/:id', async (req, res) => {
     catch (error) {
         res.status(500).json({
             message: `Failure to retrieve action by id ${req.params.id}`
-        })
+        });
     }
-})
+});
 
 
 //post for adding actions
@@ -41,9 +41,36 @@ router.post('/', async (req, res) => {
     catch (error) {
         res.status(500).json({
             message: 'Error while trying to add action to database.'
-        })
+        });
     }
-})
+});
+
+
+//delete action == tested, works.
+router.delete('/:id', async (req, res) => {
+    try {
+        const deleted = await db.removeAction(req.params.id);
+        res.status(200).json(deleted);
+    }
+    catch(error) {
+        res.status(500).json({
+            message: `Error while trying to remove action with id: ${req.params.id}`
+        });
+    }
+});
+
+//update action == tested, works.
+router.put('/:id', async (req, res) => {
+    try {
+        const updated = await db.updateAction(req.params.id, req.body);
+        res.status(200).json(updated);
+    }
+    catch (error) {
+        res.status(500).json({
+            message: 'Error while trying to update the action.'
+        });
+    }
+});
 
  
 module.exports = router;
