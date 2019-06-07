@@ -37,7 +37,17 @@ router.post('/actions', async (req, res) => {
 })
 
 //get for retrieving project by its id that returns an object with the projects.id, projects.name, projects.description, projects.completed, and the actions as an array
-
+router.get('/projects/:id', async (req, res) => {
+    try {
+        const project = await db.getProjectById(req.params.id);
+        res.status(200).json(project);
+    }
+    catch (error) {
+        res.status(500).json({
+            message: 'Error grabbing the project by specific id.'
+        });
+    }
+});
 
 //get all projects
 router.get('/projects', async (req, res) => {
